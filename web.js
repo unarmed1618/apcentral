@@ -204,10 +204,10 @@ req.session.currentUser= null;
 /*
 app.use('/:userId/*', function(req,res,next){
 User.findById(req.params.userId);
-});*/
+});
 app.get('/', function(req, res) {
     res.render('splash.jade',portfolioData);
-    });
+    });*/
 
 // Don't mess with this stuff
 var port = process.env.PORT || 5000;
