@@ -1,0 +1,26 @@
+doctype html
+html(lang="en")
+ include includes/head
+ body
+   
+   nav.nav.navbar-default.navbar-static-bottom.navbar-inverse(role="navigation")
+    div.container-fluid
+     p.navbar-text=title 
+     if(title !== "John Darrow's Active Portfolio")
+      a(href = "/"): p.navbar-text="Home"
+     //p.navbar-text.navbar-right=desc
+          
+   div(class="panel-group",id="accordion")
+    each entry,i in entries
+     div.panel.panel-default
+      div.panel-heading
+       h4.panel-title
+        a(data-toggle="collapse",data-parent="#accordion",href="#collapse"+i)
+         =entry.label 
+     div(id = "collapse"+i,class = "panel-collapse collapse")
+      div.panel-body
+       ul 
+        li: =entry.content
+        if(entry.link !=="/")
+         li: a(href=entry.link): =entry.linkdesc       
+        

@@ -1,0 +1,35 @@
+{ 
+  "name":"John Arthur Thomas Darrow",
+  "birthdate":"March 31, 1989",
+  "professionals":
+  	[
+	"Artificial Intelligence",
+	"Big Data",
+	"Humanitarian Software",
+	"Educational Software",
+	"Natural Language Processing",
+	"Visual Processing",
+	"Virtual Reality",
+	"Alternative Human-Interface Devices",
+	"Telepresence Software and Devices"
+	],
+  "personals":
+	[
+	"Human Rights",
+	"World Equality",
+	"Gender Equality",
+	"Sexual-Orientation Equality",
+	"Alternative Currency (Bitcoins)",
+	"Classical Music",
+	"Progressive Rock Music",
+	"Psychedelic Trance Music"
+	],
+  "facts":
+	[ 
+	{"label":"Who I am","content":"I am a generally agreeable, sometimes unorthodox, and consistently uncommon individual."},
+	{"label":"An address to employers","content":"Anyone considering hiring me should know that I am a transsexual, and that I have a few years left before my transition is complete. When it is, I will be a woman. It would be nice to find a company that can accept this and perhaps even support it via a progressive health insurance policy. I know this is not always possible, but I can hope."},
+	{"label":"What I am worth to you", "content":"For all the traits that I could claim that I have, the most glaring is probably my ambition. From my portfolio, it should be obvious that I often aim high, and I don't always succeed immediately. This is usually an opportunity for me to grow to meet a challenge. The point that I am trying to make here is that if you present me with a task that I am not immediately able to complete, I will work hard to learn what I need to in order to complete it in the future. I continuously strive to better myself and improve my capabilities."},
+	{"label":"Why you should hire me", "content":"If you respect me as an individual and allow me time to learn the doctrine of your company, I can be an incredible asset to you. My mind is always active, and I have a knack for improving the effectiveness and efficiency of any system that I sufficiently understand."},
+	{"label":"Why you should believe me", "content":"I try to live by a number of principles. Honesty is among them, as you can see by my transparency about my personal status. Another principle is something my father told me when I was young. He told me that any job, great or small, you should do it right, or not at all. My projects should all speak for themselves."} 
+	]
+}

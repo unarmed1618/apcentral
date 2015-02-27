@@ -1,0 +1,25 @@
+doctype html
+html(lang="en")
+ include includes/head
+ body
+  div.container.pull-left   
+   h4 How to Contact Me:
+   h5: a(href="/") Home
+   address
+    strong=addressTitle
+    br
+    =addressLine1 
+    br
+    =addressLine2
+    br
+    =addressLine3
+    br
+    abbr(title="Phone") P:
+    =phone
+   address 
+    strong=emailTitle 
+    br
+    em Best Contact Method
+    br
+    a(href="mailto:"+emailAddress)=emailAddress
+   

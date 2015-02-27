@@ -1,0 +1,8 @@
+
+
+ h1= title
+  - if (typeof form !== 'undefined')
+    form(method='get')
+      != form
+      input(type='submit' label='Send')
+

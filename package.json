@@ -1,0 +1,29 @@
+{
+  "name": "DarrowPortfolioDriver",
+  "version": "1.0.0",
+  "description": "A Website to drive my portfolio",
+  "main": "web.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Online",
+    "Portfolio"
+  ],
+  "author": "Jade Darrow",
+  "license": "ISC",
+  "dependencies": {
+    "express": "~3.4.8",
+    "forms": "~0.3.0",
+    "logfmt": "~0.20.0"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/unarmed1618/portfolio.git"
+  },
+  "bugs": {
+    "url": "https://github.com/unarmed1618/portfolio/issues"
+  },
+  "homepage": "https://github.com/unarmed1618/portfolio"
+}
