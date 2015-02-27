@@ -59,32 +59,8 @@ models.defineModels(mongoose, function() {
 app.locals({
 	title: "Darrow's portfolio application"
     });
-var personalInfo,contactInfo, portfolioData, earlyProjectData, recentProjectData;
 
 //Read in the datafiles
-fs.readFile("contactInfo.json","utf8",function(err,data) {
-	if(err) throw err;
-	contactInfo = JSON.parse(data);
-    });
-fs.readFile("personalInfo.json","utf8",function(err,data) {
-	if(err) throw err;
-	personalInfo = JSON.parse(data);
-    });
-fs.readFile("portfolioData.json","utf8", function (err, data) {
-	if(err) throw err;
-	portfolioData = JSON.parse(data);
-
-    }); 
-fs.readFile("earlyProjectData.json","utf8", function (err, data) {
-        if(err) throw err;
-	earlyProjectData =JSON.parse(data);
-
-    });
-fs.readFile("recentProjectData.json","utf8", function (err, data) {
-        if(err) throw err;
-	recentProjectData =JSON.parse(data);
-
-    });
 app.use(logfmt.requestLogger()); //logfmt hook
 
 //Routing happens from here down
@@ -148,7 +124,7 @@ res.render('entryForm.jade',{'user':req.params.userId});
 });
 app.get('/:userId/', loadUserPassive, function(req,res){
     Page.findOne({'shortname':req.params.userId,'path':'/'},function(err,page) {
-        res.render('splash.jade',page);
+        res.render('splash.jade',{'page':page});
     });
 });
 
@@ -184,21 +160,21 @@ page.remove;
 });
 });
 app.get('/signup', function(req,res){
-//console.log("Signup route works");
-//Return a form that creates a new User.
-res.render('signupForm.jade');
+    //console.log("Signup route works");
+    //Return a form that creates a new User.
+    res.render('signupForm.jade');
 });
 app.post('/signup',function(req,res){
-//console.log(req.body);
-var u = new User(req.body.user);
-console.log(u);
-u.save();
-//console.log("U has been saved");
-res.redirect('/signup');
+    //console.log(req.body);
+    var u = new User(req.body.user);
+    console.log(u);
+    u.save();
+    //console.log("U has been saved");
+    res.redirect('/signup');
 });
 app.get('/login', function(req,res){
-//Create new loginToken -- Port from pirategolf
-res.render('login.jade');
+    //Create new loginToken
+    res.render('login.jade');
 });
 app.post('/login', function(req, res) {
   User.findOne({ email: req.body.user.email }, function(err, user) {
@@ -232,14 +208,7 @@ User.findById(req.params.userId);
 app.get('/', function(req, res) {
     res.render('splash.jade',portfolioData);
     });
-app.get('/recentProjects', function(req,res) {
-//	res.send(jsp(recentProjectData));
-    res.render('splash.jade',recentProjectData);
-    });
-app.get('/earlyProjects', function(req,res) {
-//	res.send(jsp(earlyProjectData));
-    res.render('splash.jade',earlyProjectData);
-    });
+
 // Don't mess with this stuff
 var port = process.env.PORT || 5000;
 app.listen(port, function() {

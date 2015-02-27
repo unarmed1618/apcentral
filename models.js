@@ -25,8 +25,8 @@ function defineModels(mongoose, fn) {
       return this._id.toHexString();
     });
   Page = new Schema({
-      'owner':ObjectId,
-      'shortname':String,
+      'owner':ObjectId, //userid associated with
+      'shortname':String,//person
       'path':String,
       'title':String,
       'entries':[Entry]
