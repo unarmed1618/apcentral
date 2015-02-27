@@ -1,0 +1,25 @@
+doctype html
+html(lang="en")
+ include head
+ body
+   script.
+      function setViewer(e){
+        $("#viewport").load(e);
+        }
+      
+      function setRec(e){
+        $("#recognizer").load(e);
+        }
+
+   //Navbar/header includer
+   nav.nav.navbar-default.navbar-static-bottom.navbar-inverse(role="navigation")
+    div.container-fluid
+     if(page&&page.title)
+       p.navbar-text=page.title
+     else
+       p.navbar-text Active Portfolio
+     p.hidden-xs.navbar-text="    ::    "
+     p.navbar-text#recognizer="Nobody Home!"
+     script.
+       setRec('/recognize');
+     //p.navbar-text.navbar-right  

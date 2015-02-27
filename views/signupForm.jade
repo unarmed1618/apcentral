@@ -1,0 +1,24 @@
+include includes/nav
+form(action='/signup', method='POST', role="form").form-horizontal
+  .form-group
+    label.col-xs-2.col-sm-2.control-label(for='first') First Name
+    .col-sm-3.col-xs-3
+     input.form-control(name='user[first_name]',id='first')
+  .form-group
+   label.col-xs-2.col-sm-2.control-label(for='last') Last Name
+   .col-sm-3.col-xs-3
+    input.form-control(name="user[last_name]",id='last')
+  .form-group
+   label.col-xs-2.col-sm-2.control-label(for='email') Email Address
+   .col-sm-3.col-xs-3
+    input.form-control(name='user[email]',id='email')
+  .form-group
+   label.col-xs-2.col-sm-2.control-label(for='short') Short Name (This will be your url extension)
+   .col-sm-3.col-xs-3
+    input.form-control(name="user[shortname]",id='short')
+  input(type="hidden", name="user[joinDate]",value=Date.now())
+  .form-group
+   label.col-sm-2.col-xs-2.control-label(for='pass') Password
+   .col-sm-3.col-xs-3
+    input.form-control(name='user[password]', type='password',id='pass')
+  input(type='submit')

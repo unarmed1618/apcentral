@@ -1,0 +1,60 @@
+include includes/nav
+script.
+  var r = 0;
+  function incrementR(){
+    r++;
+  }
+  function addAnotherSet(){
+    var nth = r+1;
+   $("<div id='entry_"+nth+"'><label>Entry Label</label><input name='page[entries]["+nth+"][label]'><label>Entry Content</label><input name='page[entries]["+nth+"][content]'><label>Entry Link</label><input name='page[entries]["+nth+"][link]'><label>Entry Link Description</label><input name='page[entries]["+nth+"][linkdesc]'><label>Entry Link Type</label><input name='page[entries]["+nth+"][type]'></div>").insertBefore("#end");    
+   // $("<p> The "+nth+" test </p>").insertBefore("#end");
+  }
+form.entry(method="post" action="/"+user+"/new")
+  if(path)
+    label Previous Path
+    input(type=hidden, name="path",value=path)
+  label Title
+  if(page&&page.title)
+    input(name="page[title]",value=page.title) 
+  else
+    input(name="page[title]")
+  label Description
+  if(page&&page.desc)
+    input(name="page[desc]",value=page.desc)
+  else
+    input(name="page[desc]")
+  label Path
+  if(page&&page.path)
+    input(name="page[path]",value=page.path)
+  else
+    input(name="page[path]")
+  if(page&&page.entries)
+    each entry, i in page.entries
+      div(id="entry_"+i)
+       label Entry Label
+       input(name="page[entries]["+i+"][label]", value=entry.label) 
+       //, onLoad="incrementR()")
+       label Entry Content
+       input(name="page[entries]["+i+"][content]", value=entry.content)
+       label Entry Link
+       input(name="page[entries]["+i+"][link]", value=entry.link)
+       label Entry Link Description
+       input(name="page[entries]["+i+"][linkdesc]", value=entry.linkdesc)
+       label Entry Link Type
+       input(name="page[entries]["+i+"][type]", value=entry.type)
+    a(onClick="addAnotherSet();incrementR();", id="end") Add Another Entry
+  else
+   div(id="entry_0")
+    label Entry Label
+    input(name="page[entries][0][label]")
+    label Entry Content
+    input(name="page[entries][0][content]")
+    label Entry Link
+    input(name="page[entries][0][link]")
+    label Entry Link Description
+    input(name="page[entries][0][linkdesc]")
+    label Entry Link Type
+    input(name="page[entries][0][type]")
+   a(onClick="addAnotherSet();incrementR();", id="end") Add Another Entry
+  div
+    input(type='submit', value='Register')

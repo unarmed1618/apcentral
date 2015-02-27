@@ -1,0 +1,31 @@
+include includes/nav
+div.row
+    div.hidden-xs.col-sm-6.col-md-6.col-lg-6#viewport
+     script.
+      var x = location.pathname;
+      //alert(x);
+      //$('#viewport').load("/personalInfo");
+    div.container(onload='setViewer("personalInfo")')
+     div.col-xs-12.col-sm-6(style="margin:0px;border:0px;padding:0px;")
+      div.well.well-sm(style="background: linear-gradient(to top, grey, white);border:0px;margin:0px;")
+       div(class="panel-group",id="accordion")
+        if(page&&page.entries)
+         each entry,i in page.entries
+          div.panel.panel-default
+           div.panel-heading
+            h4.panel-title
+             a(data-toggle="collapse",data-parent="#accordion",href="#collapse"+i)
+              =entry.label 
+           div(id = "collapse"+i,class = "panel-collapse collapse")
+            div.panel-body
+             ul 
+              li: =entry.content
+              if(entry.type=="viewer")
+               li.hidden-xs: a(onclick="setViewer('"+entry.link+"');"): =entry.linkdesc
+               li.visible-xs: a(href=entry.link):=entry.linkdesc
+              else if(entry.type=="menu"||entry.type=="external")
+               li: a(href=entry.link): =entry.linkdesc
+              else
+               li: a(href=entry.link): =entry.linkdesc
+        else
+          p Nobody Home!

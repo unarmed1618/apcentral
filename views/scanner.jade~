@@ -1,0 +1,4 @@
+form(enctype="multipart/form-data", action="http://api.qrserver.com/v1/read-qr-code/", method="post")
+ input(type="hidden", name="MAX_FILE_SIZE", value="1048576")
+ input(name="file", type="file")
+ input(type="submit", value="Read QR code")
