@@ -3,6 +3,8 @@
 var models = require("./models");
 var mongoose = require("mongoose");
 var mongoStore = require("connect-mongodb");
+
+var Page, Entry, LoginToken, User,db;
 module.exports = function(app){
 app.get('/signup', function(req,res){
     res.render('signupForm.jade');
