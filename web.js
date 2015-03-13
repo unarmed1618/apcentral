@@ -94,7 +94,7 @@ console.log("Entered passiveLoad");
     next();
 }
 }
-/*
+
 app.get('/signup', function(req,res){
     res.render('signupForm.jade');
 });
@@ -130,7 +130,7 @@ req.session.currentUser= null;
 });
 
 /* Implement this -- */
-/*
+
 app.get('/recognize', loadUserPassive, function(req,res){
 if(req.currentUser) {
 res.send("Hello, <a href='/console/"+req.currentUser.shortname +"'>"+ req.currentUser.first_name +".");
@@ -150,8 +150,8 @@ res.redirect('/login');
 app.get('/scan', function(req,res){
 res.render('scanner.jade');
 });
-*/
-var logins = require('./login')(app);
+
+//var logins = require('./login')(app);
 //Add authentication for is this user the userId
 app.get('/:userId/new',function(req,res){
 res.render('entryForm.jade',{'user':req.params.userId});
