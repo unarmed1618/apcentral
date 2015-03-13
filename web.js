@@ -1,7 +1,7 @@
 // web.js -- Filename 
 // This section necessary to declare plugins/extensions
 var jquery = require("jquery");
-var flash = require("connect-flash")
+var flash = require("connect-flash");
 var express = require("express");
 var logfmt = require("logfmt");
 var fs = require("fs");
