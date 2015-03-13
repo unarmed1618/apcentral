@@ -5,6 +5,14 @@ var mongoose = require("mongoose");
 var mongoStore = require("connect-mongodb");
 
 var Page, Entry, LoginToken, User,db;
+models.defineModels(mongoose, function() {
+  app.Entry = Entry = mongoose.model('Entry');
+  app.Page = Page = mongoose.model('Page');
+  app.User = User = mongoose.model('User');
+  app.LoginToken = LoginToken = mongoose.model('LoginToken');
+  db = mongoose.connect(app.set('db-uri'));
+
+})
 module.exports = function(app){
 app.get('/signup', function(req,res){
     res.render('signupForm.jade');
