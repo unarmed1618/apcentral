@@ -122,6 +122,9 @@ app.get('/:userId/new',function(req,res){
 res.render('entryForm.jade',{'user':req.params.userId});
 //Return a form that creates a new entry for this user
 });
+app.get('/:userId',function(req,res){
+	res.redirect("/"+req.params.userId+"/");
+});
 app.get('/:userId/', loadUserPassive, function(req,res){
     Page.findOne({'shortname':req.params.userId,'path':'/'},function(err,page) {
         res.render('splash.jade',{'page':page});
