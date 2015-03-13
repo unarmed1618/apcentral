@@ -122,11 +122,6 @@ app.get('/:userId/new',function(req,res){
 res.render('entryForm.jade',{'user':req.params.userId});
 //Return a form that creates a new entry for this user
 });
-app.get('/:userId',loadUserPassive,function(req,res){
-	Page.findOne({'shortname':req.params.userId,'path':'/'},function(err,page) {
-		res.render('splash.jade',{'page':page});
-	});
-});
 app.get('/:userId/', loadUserPassive, function(req,res){
     Page.findOne({'shortname':req.params.userId,'path':'/'},function(err,page) {
         res.render('splash.jade',{'page':page});
@@ -206,13 +201,12 @@ req.session.currentUser= null;
 
 //kill session
 });
-/*
-app.use('/:userId/*', function(req,res,next){
-User.findById(req.params.userId);
+app.get('/:userId',loadUserPassive,function(req,res){
+	Page.findOne({'shortname':req.params.userId,'path':'/'},function(err,page) {
+		res.render('splash.jade',{'page':page});
+	});
 });
-app.get('/', function(req, res) {
-    res.render('splash.jade',portfolioData);
-    });*/
+
 
 // Don't mess with this stuff
 var port = process.env.PORT || 5000;
