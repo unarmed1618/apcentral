@@ -151,7 +151,7 @@ app.get('/scan', function(req,res){
 res.render('scanner.jade');
 });
 */
-require('./login')(app);
+var logins = require('./login')(app);
 //Add authentication for is this user the userId
 app.get('/:userId/new',function(req,res){
 res.render('entryForm.jade',{'user':req.params.userId});
