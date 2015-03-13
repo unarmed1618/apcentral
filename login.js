@@ -1,4 +1,8 @@
 //Empty commit
+
+var models = require("./models");
+var mongoose = require("mongoose");
+var mongoStore = require("connect-mongodb");
 module.exports = function(app){
 app.get('/signup', function(req,res){
     res.render('signupForm.jade');
