@@ -1,7 +1,10 @@
 include includes/nav
 form(action='/login',method='post')
-  label Email
-  input(name='user[email]')
-  label Password
-  input(name='user[password]')
+ .form-group
+  label(for='user[email]') Email Address
+  input(type="email",class="form-control", placeholder="Enter Email", id="user[email]",name='user[email]')
+ .form-group
+  label(for='user[password]') Password
+  input(type="password",class="form-control", placeholder="Password", id="user[password]",name='user[password]')
+ .form-group
   input(type='submit')
