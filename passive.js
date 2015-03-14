@@ -3,14 +3,7 @@ var express = require("express");
 var app = express();
 var mongoose = require("mongoose");
 var mongoStore = require("connect-mongodb");
-var passive = require("./passive");
-var LoginToken, User,db;
-models.defineModels(mongoose, function() {
-  app.User = User = mongoose.model('User');
-  app.LoginToken = LoginToken = mongoose.model('LoginToken');
-  db = mongoose.connect(app.set('db-uri'));
 
-})
 module.exports = function loadUserPassive(req,res,next) {
 //console.log("Entered passiveLoad");
     if (req&&req.session&&req.session.user_id) {
