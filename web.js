@@ -11,6 +11,8 @@ var mongoose = require("mongoose");
 var mongoStore = require("connect-mongodb");
 var jade = require("jade");
 var url = require("url");
+var logins = require('./login');
+var logins = require('./login')(app);
 var jadeOptions = { filename: './', pretty: true };
 var Page, Entry, LoginToken, User,db;
 var app = express();
@@ -153,7 +155,6 @@ app.get('/scan', function(req,res){
 res.render('scanner.jade');
 });
 
-//var logins = require('./login')(app);
 //Add authentication for is this user the userId
 app.get('/:userId/new',function(req,res){
 res.render('entryForm.jade',{'user':req.params.userId});
