@@ -77,7 +77,9 @@ app.get('/personalinfo', function(req,res){
     });
 var passive = require('./passive');
 function loadUserPassive(req,res,next) {
-	passive.loadUserPassive(req,res,next,app);
+var p = passive.loadUserPassive(req,res,next,app);
+	return p;
+	
 }
     /*
 function loadUserPassive(req,res,next) {
