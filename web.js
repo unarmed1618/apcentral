@@ -76,7 +76,9 @@ app.get('/personalinfo', function(req,res){
     res.render('pers.jade',personalInfo);
     });
 var passive = requre('./passive');
-function loadUserPassive = passive.loadUserPassive;
+function loadUserPassive(req,res,next) {
+	passive.loadUserPassive(req,res,next,app);
+}
     /*
 function loadUserPassive(req,res,next) {
 console.log("Entered passiveLoad");
