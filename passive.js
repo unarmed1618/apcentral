@@ -4,11 +4,11 @@ var models = require("./models");
 var mongoose = require("mongoose");
 var mongoStore = require("connect-mongodb");
 
-module.exports = function loadUserPassive(req,res,next) {
+module.exports = function loadUserPassive(req,res,next,app) {
 //console.log("Entered passiveLoad");
     if (req&&req.session&&req.session.user_id) {
         //console.log("Entered If");
-        User.findOne({_id:req.session.user_id}, function(err,user) {
+        app.User.findOne({_id:req.session.user_id}, function(err,user) {
             if (user) {
                // console.log("Found User");
                 req.currentUser = user;
