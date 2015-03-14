@@ -75,13 +75,13 @@ app.get('/personalinfo', function(req,res){
 //	res.send(jpers(personalInfo));
     res.render('pers.jade',personalInfo);
     });
-var passive = require('./passive');
-function loadUserPassive(req,res,next) {
+//var passive = require('./passive');
+/*function loadUserPassive(req,res,next) {
 var p = passive.loadUserPassive(req,res,next,app);
 	return p;
 	
 }
-    /*
+  */  
 function loadUserPassive(req,res,next) {
 console.log("Entered passiveLoad");
 //console.log(req);
@@ -103,7 +103,6 @@ console.log("Entered passiveLoad");
     next();
 }
 }
-*/
 app.get('/signup', function(req,res){
     res.render('signupForm.jade');
 });
