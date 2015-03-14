@@ -2,8 +2,8 @@
 
 var models = require("./models");
 var mongoose = require("mongoose");
-var express = require("express");
-var app = express();
+//var express = require("express");
+//var app = express();
 var mongoStore = require("connect-mongodb");
 var passive = require("./passive");
 
