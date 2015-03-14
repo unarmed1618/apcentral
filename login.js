@@ -6,12 +6,7 @@ var express = require("express");
 var app = express();
 var mongoStore = require("connect-mongodb");
 var passive = require("./passive");
-var  LoginToken, User,db;
-models.defineModels(mongoose, function() {
-  app.User = User = mongoose.model('User');
-  app.LoginToken = LoginToken = mongoose.model('LoginToken');
-  db = mongoose.connect(app.set('db-uri'));
-})
+
 module.exports = 
   function(app){
 app.get('/signup', function(req,res){
