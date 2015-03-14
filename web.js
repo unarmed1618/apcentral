@@ -11,10 +11,10 @@ var mongoose = require("mongoose");
 var mongoStore = require("connect-mongodb");
 var jade = require("jade");
 var url = require("url");
-var logins = require('./login')(app);
 var jadeOptions = { filename: './', pretty: true };
 var Page, Entry, LoginToken, User,db;
 var app = express();
+
 function renderJadeFile(template, options) {
   var fn = jade.compile(template, options);
   return fn(options.locals);
@@ -57,6 +57,7 @@ models.defineModels(mongoose, function() {
 
 })
 
+var logins = require('./login')(app);
 app.locals({
 	title: "Darrow's portfolio application"
     });
