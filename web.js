@@ -82,7 +82,7 @@ var p = passive.loadUserPassive(req,res,next,app);
 	
 }
   */  
-function loadUserPassive(req,res,next) {
+  app.use(function loadUserPassive(req,res,next) {
 console.log("Entered passiveLoad");
 //console.log(req);
 //console.log(res);
@@ -102,7 +102,7 @@ console.log("Entered passiveLoad");
     console.log("No user logged in");
     next();
 }
-}
+});
 app.get('/signup', function(req,res){
     res.render('signupForm.jade');
 });
@@ -139,7 +139,7 @@ req.session.currentUser= null;
 
 /* Implement this -- */
 
-app.get('/recognize', loadUserPassive, function(req,res){
+app.get('/recognize', function(req,res){
 if(req.currentUser) {
 res.send("Hello, <a href='/console/"+req.currentUser.shortname +"'>"+ req.currentUser.first_name +".");
 } else {
@@ -147,7 +147,7 @@ res.send("<a href='/login'>Login</a> or <a href='/signup'>Sign up</a>");
 }
 });
 
-app.get('/console/:userId', loadUserPassive, function(req,res){
+app.get('/console/:userId', function(req,res){
 if(req.currentUser) {
     User.findOne({'shortname':req.params.userId},function(err,user){
 	res.render('console.jade',{'user':user});
@@ -165,7 +165,7 @@ app.get('/:userId/new',function(req,res){
 res.render('entryForm.jade',{'user':req.params.userId});
 //Return a form that creates a new entry for this user
 });
-app.get('/:userId/', loadUserPassive, function(req,res){
+app.get('/:userId/',  function(req,res){
     Page.findOne({'shortname':req.params.userId,'path':'/'},function(err,page) {
         res.render('splash.jade',{'page':page});
     });
@@ -202,7 +202,7 @@ Page.findOne({'shortname':req.params.userId,'path':req.body.path},function(err,p
 page.remove;
 });
 });
-app.get('/:userId',loadUserPassive,function(req,res){
+app.get('/:userId',function(req,res){
 	Page.findOne({'shortname':req.params.userId,'path':'/'},function(err,page) {
 		res.render('splash.jade',{'page':page});
 	});
