@@ -1,11 +1,13 @@
 include includes/nav
 .container-fluid
- form(action='/login',method='post')
+ form.form-inline(action='/login',method='post')
   .form-group
-   label(for='user[email]') Email Address
+   label.sr-only(for='user[email]') Email Address
    input(type="email",class="form-control", placeholder="Enter Email", id="user[email]",name='user[email]')
   .form-group
-   label(for='user[password]') Password
+   label.sr-only(for='user[password]') Password
    input(type="password",class="form-control", placeholder="Password", id="user[password]",name='user[password]')
-  .form-group
-   input(type='submit')
+  .checkbox
+   label
+    input(type="checkbox") Remember me
+  button.btn.btn-default(type='submit') Sign in
