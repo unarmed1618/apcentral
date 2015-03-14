@@ -4,10 +4,8 @@ var app = express();
 var mongoose = require("mongoose");
 var mongoStore = require("connect-mongodb");
 var passive = require("./passive");
-var Page, Entry, LoginToken, User,db;
+var LoginToken, User,db;
 models.defineModels(mongoose, function() {
-  app.Entry = Entry = mongoose.model('Entry');
-  app.Page = Page = mongoose.model('Page');
   app.User = User = mongoose.model('User');
   app.LoginToken = LoginToken = mongoose.model('LoginToken');
   db = mongoose.connect(app.set('db-uri'));
