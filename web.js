@@ -73,6 +73,7 @@ app.get('/personalinfo', function(req,res){
 //	res.send(jpers(personalInfo));
     res.render('pers.jade',personalInfo);
     });
+    /*
 function loadUserPassive(req,res,next) {
 console.log("Entered passiveLoad");
 //console.log(req);
@@ -130,7 +131,7 @@ req.session.currentUser= null;
 });
 
 /* Implement this -- */
-
+/*
 app.get('/recognize', loadUserPassive, function(req,res){
 if(req.currentUser) {
 res.send("Hello, <a href='/console/"+req.currentUser.shortname +"'>"+ req.currentUser.first_name +".");
@@ -138,6 +139,7 @@ res.send("Hello, <a href='/console/"+req.currentUser.shortname +"'>"+ req.curren
 res.send("<a href='/login'>Login</a> or <a href='/signup'>Sign up</a>");
 }
 });
+*/
 app.get('/console/:userId', loadUserPassive, function(req,res){
 if(req.currentUser) {
     User.findOne({'shortname':req.params.userId},function(err,user){
