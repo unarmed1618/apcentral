@@ -99,7 +99,7 @@ console.log("Entered passiveLoad");
     next();
 }
 }
-
+*/
 app.get('/signup', function(req,res){
     res.render('signupForm.jade');
 });
