@@ -75,7 +75,7 @@ app.get('/personalinfo', function(req,res){
 //	res.send(jpers(personalInfo));
     res.render('pers.jade',personalInfo);
     });
-var passive = requre('./passive');
+var passive = require('./passive');
 function loadUserPassive(req,res,next) {
 	passive.loadUserPassive(req,res,next,app);
 }
