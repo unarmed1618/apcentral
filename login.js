@@ -6,7 +6,6 @@ var mongoose = require("mongoose");
 //var app = express();
 var mongoStore = require("connect-mongodb");
 var passive = require("./passive");
-
 module.exports = 
   function(app){
 app.get('/signup', function(req,res){
@@ -44,7 +43,7 @@ req.session.currentUser= null;
 });
 
 /* Implement this -- */
-app.get('/recognize', loadUserPassive, function(req,res){
+app.get('/recognize', passive.loadUserPassive, function(req,res){
 if(req.currentUser) {
 res.send("Hello, <a href='/console/"+req.currentUser.shortname +"'>"+ req.currentUser.first_name +".");
 } else {
