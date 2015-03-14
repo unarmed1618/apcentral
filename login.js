@@ -3,7 +3,7 @@
 var models = require("./models");
 var mongoose = require("mongoose");
 var mongoStore = require("connect-mongodb");
-
+var passive = require("./passive");
 var Page, Entry, LoginToken, User,db;
 models.defineModels(mongoose, function() {
   app.Entry = Entry = mongoose.model('Entry');
@@ -13,28 +13,7 @@ models.defineModels(mongoose, function() {
   db = mongoose.connect(app.set('db-uri'));
 
 })
-module.exports = {
-  function loadUserPassive(req,res,next) {
-console.log("Entered passiveLoad");
-//console.log(req);
-//console.log(res);
-    if (req&&req.session&&req.session.user_id) {
-        //console.log("Entered If");
-        User.findOne({_id:req.session.user_id}, function(err,user) {
-            if (user) {
-                console.log("Found User");
-                req.currentUser = user;
-                next();
-            }  else {
-                console.log("User not Found");
-                next();
-                }
-});
-} else {
-    console.log("No user logged in");
-    next();
-}
-}
+module.exports = 
   function(app){
 app.get('/signup', function(req,res){
     res.render('signupForm.jade');
@@ -78,4 +57,4 @@ res.send("Hello, <a href='/console/"+req.currentUser.shortname +"'>"+ req.curren
 res.send("<a href='/login'>Login</a> or <a href='/signup'>Sign up</a>");
 }
 });
-}}
+}
