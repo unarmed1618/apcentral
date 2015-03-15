@@ -65,41 +65,18 @@ app.locals({
 //Read in the datafiles
 app.use(logfmt.requestLogger()); //logfmt hook
 
-//Routing happens from here down
 
-app.get('/contactme', function(req,res) {
-//	res.send(jcn(contactInfo));	
-    res.render('contact.jade',contactInfo);
-    });
-app.get('/personalinfo', function(req,res){
-//	res.send(jpers(personalInfo));
-    res.render('pers.jade',personalInfo);
-    });
-//var passive = require('./passive');
-/*function loadUserPassive(req,res,next) {
-var p = passive.loadUserPassive(req,res,next,app);
-	return p;
-	
-}
-  */  
   app.use(function loadUserPassive(req,res,next) {
-console.log("Entered passiveLoad");
-//console.log(req);
-//console.log(res);
     if (req&&req.session&&req.session.user_id) {
-        //console.log("Entered If");
         User.findOne({_id:req.session.user_id}, function(err,user) {
             if (user) {
-                console.log("Found User");
                 req.currentUser = user;
                 next();
             }  else {
-                console.log("User not Found");
                 next();
                 }
 });
 } else {
-    console.log("No user logged in");
     next();
 }
 });
@@ -111,9 +88,6 @@ app.post('/signup',function(req,res){
     u.save();
     res.redirect('/signup');
 });
-//app.get('/login', function(req,res){
-//    res.render('login.jade');
-//});
 app.post('/login', function(req, res) {
   User.findOne({ email: req.body.user.email }, function(err, user) {
     if (user && user.authenticate(req.body.user.password)) {
@@ -144,7 +118,7 @@ if(req.currentUser) {
 res.send("Hello, <a href='/console/"+req.currentUser.shortname +"'>"+ req.currentUser.first_name +".");
 } else {
 	res.render("login.jade");
-//res.send("<a href='/login'>Login</a> or <a href='/signup'>Sign up</a>");
+
 }
 });
 
