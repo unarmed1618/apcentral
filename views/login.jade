@@ -1,6 +1,6 @@
-include includes/nav
+//include includes/nav
 .container-fluid
- form.form-inline(action='/login',method='post')
+ form.navbar-form.navbar-left(role="login" action='/login',method='post')
   .form-group
    label.sr-only(for='user[email]') Email Address
    input(type="email",class="form-control", placeholder="Enter Email", id="user[email]",name='user[email]')
