@@ -1,0 +1,13 @@
+//button.btn.btn-default(type="button", data-toggle="modal" data-target=".login-modal",aria-label="login")
+span.glyphicon.glyphicon-log-in(data-toggle="modal", data-target=".login-modal",aria-label="login")
+.modal.fade.login-modal(tabindex="-1",role="login")
+ .modal-dialog.modal-sm
+  .modal-content
+   form.form-inline(role="login" action='/login',method='post')
+    .form-group
+     label.sr-only(for="user[email]") Enter Email
+     input.form-control.input-sm(type="email", placeholder="Enter Email", id="user[email]",name='user[email]')
+    .form-group
+     label.sr-only(for="user[password]") Password
+     input.form-control.input-sm(type="password", placeholder="Password", id="user[password]",name='user[password]')
+    button.btn.btn-default(type='submit') Sign in
