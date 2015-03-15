@@ -109,6 +109,7 @@ app.post('/login', function(req, res) {
 });
 app.get('/logout', function(req,res){
 req.session.currentUser= null;
+res.redirect("/");
 });
 //currently in use
 function authentify(req,res,next){
