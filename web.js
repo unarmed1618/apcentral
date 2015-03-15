@@ -164,7 +164,7 @@ app.get('/:userId/edit',authentify,function(req,res){
 	Page.findOne({'shortname':req.params.userId,'path':'/'},function(err,page) {
         res.render('entryForm.jade',{'user':req.params.userId,'path':req.params.path,'page': page});
     });
-}
+});
 app.get('/:userId/',  function(req,res){
     Page.findOne({'shortname':req.params.userId,'path':'/'},function(err,page) {
         res.render('splash.jade',{'page':page});
