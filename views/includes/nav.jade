@@ -29,11 +29,10 @@ html(lang="en")
        p.navbar-text Active Portfolio
      p.hidden-xs.navbar-text=" "
       span.glyphicon.glyphicon-globe 
-     if(user&&user.shortname)
-      .fb-share-button(data-href="http://apcentral.herokuapp.com/"+user.shortname, data-layout="button")
-     else
-      .fb-share-button(data-href="http://apcentral.herokuapp.com/", data-layout="button")
-     
+     //if(user&&user.shortname)
+     // .fb-share-button(data-href="http://apcentral.herokuapp.com/"+user.shortname, data-layout="button")
+     //else
+     // .fb-share-button(data-href="http://apcentral.herokuapp.com/", data-layout="button")
      p.navbar-text#recognizer="Nobody Home!"
      script.
        setRec('/recognize');
