@@ -140,7 +140,7 @@ function authenticate(req,res,next) {
 }
 
 app.get('/recognize', function(req,res){
-if(req.currentUser) {res.render("tools.jade",{'user':req.currentUser})} else {res.render("login.jade");}
+if(req.currentUser) {res.render("includes/tools.jade",{'user':req.currentUser})} else {res.render("includes/login.jade");}
 });
 
 app.get('/console/:userId',authentify, function(req,res){
