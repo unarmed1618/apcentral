@@ -140,9 +140,7 @@ function authenticate(req,res,next) {
 }
 
 app.get('/recognize', function(req,res){
-if(req.currentUser) {
-res.send("Hello, <a href='/console/"+req.currentUser.shortname +"'>"+ req.currentUser.first_name +".");
-} else {res.render("login.jade");}
+if(req.currentUser) {res.render("tools.jade",{'user':req.currentUser})} else {res.render("login.jade");}
 });
 
 app.get('/console/:userId',authentify, function(req,res){
