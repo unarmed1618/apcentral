@@ -1,9 +1,0 @@
-form.entry
-  input(name=entry[label])
-  input(name=entry[content])
-  input(name=entry[link])
-  input(name=entry[linkdesc])
-  input(name=entry[path])
-  div 
-    input(type='submit', value='Register')
-  
