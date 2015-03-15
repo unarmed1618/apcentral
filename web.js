@@ -136,8 +136,6 @@ function authentify(req,res,next) {
 	}
 }
 
-/* Implement this -- */
-
 app.get('/recognize', function(req,res){
 if(req.currentUser) {
 res.send("Hello, <a href='/console/"+req.currentUser.shortname +"'>"+ req.currentUser.first_name +".");
@@ -162,6 +160,11 @@ app.get('/:userId/new', authentify,function(req,res){
 res.render('entryForm.jade',{'user':req.params.userId});
 //Return a form that creates a new entry for this user
 });
+app.get('/:userId/edit',authentify,function(req,res){
+	Page.findOne({'shortname':req.params.userId,'path':'/'},function(err,page) {
+        res.render('entryForm.jade',{'user':req.params.userId,'path':req.params.path,'page': page});
+    });
+}
 app.get('/:userId/',  function(req,res){
     Page.findOne({'shortname':req.params.userId,'path':'/'},function(err,page) {
         res.render('splash.jade',{'page':page});
