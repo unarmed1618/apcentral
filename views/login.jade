@@ -1,6 +1,10 @@
-form.navbar-form.navbar-left(role="login" action='/login',method='post')
-  .form-group
-   input.form-control.input-sm(type="email", placeholder="Enter Email", id="user[email]",name='user[email]')
-  .form-group
-   input.form-control.input-sm(type="password", placeholder="Password", id="user[password]",name='user[password]')
-  button.btn.btn-default(type='submit') Sign in
+button.btn.btn-primary(type="button", data-toggle="modal" data-target=".login-modal")Log in
+.modal.fade.login-modal(tabindex="-1",role="login")
+ .modal-dialog.modal-sm
+  .modal-content
+   form.navbar-form.navbar-left(role="login" action='/login',method='post')
+    .form-group
+     input.form-control.input-sm(type="email", placeholder="Enter Email", id="user[email]",name='user[email]')
+    .form-group
+     input.form-control.input-sm(type="password", placeholder="Password", id="user[password]",name='user[password]')
+    button.btn.btn-default(type='submit') Sign in
