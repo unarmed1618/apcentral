@@ -111,9 +111,9 @@ app.post('/signup',function(req,res){
     u.save();
     res.redirect('/signup');
 });
-app.get('/login', function(req,res){
-    res.render('login.jade');
-});
+//app.get('/login', function(req,res){
+//    res.render('login.jade');
+//});
 app.post('/login', function(req, res) {
   User.findOne({ email: req.body.user.email }, function(err, user) {
     if (user && user.authenticate(req.body.user.password)) {
@@ -143,7 +143,8 @@ app.get('/recognize', function(req,res){
 if(req.currentUser) {
 res.send("Hello, <a href='/console/"+req.currentUser.shortname +"'>"+ req.currentUser.first_name +".");
 } else {
-res.send("<a href='/login'>Login</a> or <a href='/signup'>Sign up</a>");
+	res.render("login.jade");
+//res.send("<a href='/login'>Login</a> or <a href='/signup'>Sign up</a>");
 }
 });
 
