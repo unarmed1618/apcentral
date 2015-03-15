@@ -116,10 +116,7 @@ req.session.currentUser= null;
 app.get('/recognize', function(req,res){
 if(req.currentUser) {
 res.send("Hello, <a href='/console/"+req.currentUser.shortname +"'>"+ req.currentUser.first_name +".");
-} else {
-	res.render("login.jade");
-
-}
+} else {res.render("login.jade");}
 });
 
 app.get('/console/:userId', function(req,res){
@@ -129,7 +126,7 @@ if(req.currentUser) {
 });
 }
 else
-res.redirect('/login');
+res.redirect('/:userId');
 });
 app.get('/scan', function(req,res){
 res.render('scanner.jade');
