@@ -110,7 +110,8 @@ app.post('/login', function(req, res) {
 app.get('/logout', function(req,res){
 req.session.currentUser= null;
 });
-function authenticate(req,res,next){
+//currently in use
+function authentify(req,res,next){
 	if (req&&req.session&&req.session.user_id) {
         User.findOne({_id:req.session.user_id}, function(err,user) {
             if (user) {
@@ -125,7 +126,8 @@ function authenticate(req,res,next){
     res.redirect('/'+req.params.userId);
 }
 }
-function authentify(req,res,next) {
+//Not currently in use
+function authenticate(req,res,next) {
 	if(req.currentUser&&(req.currentUser.shortname == req.params.userId))
 	{
 		next();
