@@ -159,12 +159,12 @@ res.render('scanner.jade');
 
 //Add authentication for is this user the userId
 app.get('/:userId/new', authentify,function(req,res){
-res.render('entryForm.jade',{'user':req.params.userId});
+res.render('entryForm.jade',{'user':req.params.userId,'method':"create"});
 //Return a form that creates a new entry for this user
 });
 app.get('/:userId/edit',authentify,function(req,res){
 	Page.findOne({'shortname':req.params.userId,'path':'/'},function(err,page) {
-        res.render('entryForm.jade',{'user':req.params.userId,'path':req.params.path,'page': page});
+        res.render('entryForm.jade',{'user':req.params.userId,'method':"update",'path':req.params.path,'page': page});
     });
 });
 app.get('/:userId/',  function(req,res){
@@ -183,11 +183,11 @@ app.get('/:userId/:path', function(req,res){
 //Add auth
 app.get('/:userId/:path/edit', authentify,function(req,res){
     Page.findOne({'shortname':req.params.userId,'path':req.params.path},function(err,page) {
-        res.render('entryForm.jade',{'user':req.params.userId,'path':req.params.path,'page': page});
+        res.render('entryForm.jade',{'user':req.params.userId,'method':"update",'path':req.params.path,'page': page});
     });
 });
 //add auth
-app.post('/:userId/new', authentify, function(req,res){
+app.post('/:userId/create', authentify, function(req,res){
 var e = new Page(req.body.page);
 e.shortname = req.params.userId;
 e.save();
@@ -199,7 +199,7 @@ Page.update({'shortname':req.params.userId,'path':req.body.path},req.body.page,f
 res.redirect('/'+req.params.userId+'/'+page.path);
 });
 });
-app.post('/:userId/:path/del', authentify, function(req,res){
+app.post('/:userId/:path/delete', authentify, function(req,res){
 Page.findOne({'shortname':req.params.userId,'path':req.body.path},function(err,page) {
 page.remove;
 });
