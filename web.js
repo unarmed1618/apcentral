@@ -110,6 +110,31 @@ app.post('/login', function(req, res) {
 app.get('/logout', function(req,res){
 req.session.currentUser= null;
 });
+function authenticate(req,res,next){
+	if (req&&req.session&&req.session.user_id) {
+        User.findOne({_id:req.session.user_id}, function(err,user) {
+            if (user) {
+                req.currentUser = user;
+                next();
+            }  else {
+                //next();
+		res.redirect('/'+req.params.userId);
+                }
+});
+} else {
+    res.redirect('/'+req.params.userId);
+}
+}
+function authentify(req,res,next) {
+	if(req.currentUser&&(req.currentUser.shortname == req.params.userId))
+	{
+		next();
+	}
+	else
+	{
+		res.redirect('/'+req.params.userId);
+	}
+}
 
 /* Implement this -- */
 
@@ -119,7 +144,7 @@ res.send("Hello, <a href='/console/"+req.currentUser.shortname +"'>"+ req.curren
 } else {res.render("login.jade");}
 });
 
-app.get('/console/:userId', function(req,res){
+app.get('/console/:userId',authentify, function(req,res){
 if(req.currentUser) {
     User.findOne({'shortname':req.params.userId},function(err,user){
 	res.render('console.jade',{'user':user});
@@ -133,7 +158,7 @@ res.render('scanner.jade');
 });
 
 //Add authentication for is this user the userId
-app.get('/:userId/new',function(req,res){
+app.get('/:userId/new', authentify,function(req,res){
 res.render('entryForm.jade',{'user':req.params.userId});
 //Return a form that creates a new entry for this user
 });
@@ -151,25 +176,25 @@ app.get('/:userId/:path', function(req,res){
 });
 
 //Add auth
-app.get('/:userId/:path/edit',function(req,res){
+app.get('/:userId/:path/edit', authentify,function(req,res){
     Page.findOne({'shortname':req.params.userId,'path':req.params.path},function(err,page) {
         res.render('entryForm.jade',{'user':req.params.userId,'path':req.params.path,'page': page});
     });
 });
 //add auth
-app.post('/:userId/new', function(req,res){
+app.post('/:userId/new', authentify, function(req,res){
 var e = new Page(req.body.page);
 e.shortname = req.params.userId;
 e.save();
 res.redirect('/'+req.params.userId+'/'+e.path);
 });
 
-app.post('/:userId/update', function(req,res){
+app.post('/:userId/update', authentify, function(req,res){
 Page.update({'shortname':req.params.userId,'path':req.body.path},req.body.page,function(err, page,lastErrorObject) {
 res.redirect('/'+req.params.userId+'/'+page.path);
 });
 });
-app.post('/:userId/:path/del', function(req,res){
+app.post('/:userId/:path/del', authentify, function(req,res){
 Page.findOne({'shortname':req.params.userId,'path':req.body.path},function(err,page) {
 page.remove;
 });
