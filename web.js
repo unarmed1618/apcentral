@@ -66,7 +66,7 @@ app.locals({
 app.use(logfmt.requestLogger()); //logfmt hook
 
 
-  app.use(function loadUserPassive(req,res,next) {
+  app.use('/recognize', function loadUserPassive(req,res,next) {
     if (req&&req.session&&req.session.user_id) {
         User.findOne({_id:req.session.user_id}, function(err,user) {
             if (user) {
