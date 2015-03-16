@@ -2,15 +2,6 @@ doctype html
 html(lang="en")
  include head
  body
-   div(id="fb-root")
-   script.
-     (function(d, s, id) {
-     var js, fjs = d.getElementsByTagName(s)[0];
-     if (d.getElementById(id)) return;
-     js = d.createElement(s); js.id = id;
-     js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=1421237764808842&version=v2.0";
-     fjs.parentNode.insertBefore(js, fjs);
-     }(document, 'script', 'facebook-jssdk'));</script>
    script.
       function setViewer(e){
         $("#viewport").load(e);
@@ -24,16 +15,12 @@ html(lang="en")
    nav.nav.navbar-default.navbar-static-bottom.navbar-inverse(role="navigation")
     div.container-fluid
      if(page&&page.title)
-       p.navbar-text=page.title
+       p.hidden-xs.navbar-text=page.title
      else
-       p.navbar-text Active Portfolio
-     p.hidden-xs.navbar-text=" "
-      span.glyphicon.glyphicon-globe 
-     //if(user&&user.shortname)
-     // .fb-share-button(data-href="http://apcentral.herokuapp.com/"+user.shortname, data-layout="button")
-     //else
-     // .fb-share-button(data-href="http://apcentral.herokuapp.com/", data-layout="button")
+       p.hidden-xs.navbar-text Active Portfolio
+     p.navbar-text=" "
+      a(href="/")
+       span.glyphicon.glyphicon-globe(title="Global View")
      p.navbar-text#recognizer="Nobody Home!"
      script.
        setRec('/recognize');
-     //p.navbar-text.navbar-right  
