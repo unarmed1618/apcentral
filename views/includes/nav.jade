@@ -18,8 +18,14 @@ html(lang="en")
        p.hidden-xs.navbar-text=page.title
      else
        p.hidden-xs.navbar-text Active Portfolio
-     a(href="/")
-      span.glyphicon.glyphicon-globe(title="Global View")
-     p.navbar-text#recognizer="Nobody Home!"
-     script.
-       setRec('/recognize');
+     ul.nav.navbar-nav.navbar-right
+      li
+       a(href="/")
+        span.glyphicon.glyphicon-globe(title="Global View")
+      li
+       a(href="#stats")
+        span.glyphicon.glyphicon-stats(title="Statistics")
+      li 
+       p.navbar-text#recognizer="Nobody Home!"
+       script.
+        setRec('/recognize');
