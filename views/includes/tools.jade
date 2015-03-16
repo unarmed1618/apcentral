@@ -1,14 +1,9 @@
-span.glyphicon.glyphicon-cog(data-toggle="modal", data-target=".tools-modal",aria-label="tools")
-.modal.fade.tools-modal(tabindex="-1",role="tools")
- .modal-dialog.modal-sm
-  .modal-content
-   form.form-inline(role="login" action='/login',method='post')
-    .form-group
-     label.sr-only(for="user[email]") Enter Email
-     input.form-control.input-sm(type="email", placeholder="Enter Email", id="user[email]",name='user[email]')
-    .form-group
-     label.sr-only(for="user[password]") Password
-     input.form-control.input-sm(type="password", placeholder="Password", id="user[password]",name='user[password]')
-    button.btn.btn-default(type='submit') Sign in
+a(href="/console/"+currentUser)
+ span.glyphicon.glyphicon-cog(aria-label="settings",title="Settings")
+a(href="/"+currentUser)
+ span.glyphicon.glyphicon-home(aria-label="home", title="Home")
+if(currentUser==visibleUser)
+ a(href="#edit",data-toggle="tab")
+  span.glyphicon.glyphicon-edit
 a(href="/logout")
- span.glyphicon.glyphicon-log-out(aria-label="logout")
+ span.glyphicon.glyphicon-log-out(aria-label="logout", title="Log Out")
