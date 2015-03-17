@@ -1,9 +1,13 @@
-li:a(href="/console/"+currentUser)
+li 
+ a(href="/console/"+currentUser)
   span.glyphicon.glyphicon-cog(aria-label="settings",title="Settings")
-li:a(href="/"+currentUser)
- span.glyphicon.glyphicon-home(aria-label="home", title="Home")
+li 
+ a(href="/"+currentUser)
+  span.glyphicon.glyphicon-home(aria-label="home", title="Home")
 if(currentUser==visibleUser)
- li:a(href="#edit",data-toggle="tab")
-  span.glyphicon.glyphicon-edit
-li:a(href="/logout")
- span.glyphicon.glyphicon-log-out(aria-label="logout", title="Log Out")
+ li
+  a(href="#edit",data-toggle="tab")
+   span.glyphicon.glyphicon-edit
+li
+ a(href="/logout")
+  span.glyphicon.glyphicon-log-out(aria-label="logout", title="Log Out")
