@@ -6,7 +6,7 @@ script.
   }
   function addAnotherSet(){
     var nth = r+1;
-   $("<div id='entry_"+nth+"'><label>Entry Label</label><input name='page[entries]["+nth+"][label]'><label>Entry Content</label><input name='page[entries]["+nth+"][content]'><label>Entry Link</label><input name='page[entries]["+nth+"][link]'><label>Entry Link Description</label><input name='page[entries]["+nth+"][linkdesc]'><label>Entry Link Type</label><input name='page[entries]["+nth+"][type]'></div>").insertBefore("#end");    
+   $("<div id='entry_"+nth+"'><label>Entry Label</label><input name='page[entries]["+nth+"][label]'><label>Entry Content</label><input name='page[entries]["+nth+"][content]'><label>Entry Link</label><input name='page[entries]["+nth+"][link]'><label>Entry Link Description</label><input name='page[entries]["+nth+"][linkdesc]'><label>Entry Link Type</label><select name='page[entries]["+nth+"][type]'><option value="viewer">Viewer</option><option value="menu">Menu</option><option value="external" selected>External Link</option></div>").insertBefore("#end");    
    // $("<p> The "+nth+" test </p>").insertBefore("#end");
   }
 //form.entry(method="post" action="/"+user+"/"+method);
@@ -71,7 +71,7 @@ form.entry(method="post" action="/"+user+"/"+method)
     select(name="page[entries][0][type]") 
      option(value="viewer") Viewer
      option(value="menu") Menu
-     option(value="external") External Link
+     option(value="external" selected) External Link
    a(onClick="addAnotherSet();incrementR();", id="end") Add Another Entry
   div
     input(type='submit', value='Register')
