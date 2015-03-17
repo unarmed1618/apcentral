@@ -15,6 +15,9 @@ if(currentUser.shortname==visibleUser)
  li
   a(href="#edit",data-toggle="tab")
    span.glyphicon.glyphicon-edit
+ li
+  a(href="/"+currentUser.shortname+"/add")
+   span.glyphicon.glyphicon-plus
 li
  a(href="/logout")
   span.glyphicon.glyphicon-log-out(aria-label="logout", title="Log Out")
