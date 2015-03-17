@@ -161,7 +161,7 @@ app.get('/recognize/api',loadUserPassive,function(req,res){
 		res.json({'see':true});
 	else
 		res.json({'see':false});
-})
+});
 
 app.get('/console/:userId',authentify, function(req,res){
 if(req.currentUser) {
