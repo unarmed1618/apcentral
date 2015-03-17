@@ -160,7 +160,7 @@ if(req.currentUser) {res.render("includes/tools.jade",{'currentUser':req.current
 app.get('/console/:userId',authentify, function(req,res){
 if(req.currentUser) {
     User.findOne({'shortname':req.params.userId},function(err,user){
-	res.render('console.jade',{'currentUser':user});
+	res.render('console.jade',{'user':user});
 });
 }
 else
@@ -171,12 +171,12 @@ res.render('scanner.jade');
 });
 //Add authentication for is this user the userId
 app.get('/:userId/new', authentify,function(req,res){
-res.render('entryForm.jade',{'visibleUser':req.params.userId,'currentUser':req.currentUser,'method':"create"});
+res.render('entryForm.jade',{'user':req.params.userId,'method':"create"});
 //Return a form that creates a new entry for this user
 });
 app.get('/:userId/edit',authentify,function(req,res){
 	Page.findOne({'shortname':req.params.userId,'path':'/'},function(err,page) {
-        res.render('entryForm.jade',{'visibleUser':req.params.userId,'currentUser':req.currentUser,method':"update",'path':req.params.path,'page': page});
+        res.render('entryForm.jade',{'user':req.params.userId,method':"update",'path':req.params.path,'page': page});
     });
 });
 app.get('/:userId/',  function(req,res){
