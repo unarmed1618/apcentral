@@ -5,8 +5,12 @@ li
  a(href="/"+currentUser)
   span.glyphicon.glyphicon-home(aria-label="home", title="Home")
 li
- a(href="#qrModal")
-  span.glyphicon.glyphicon-qrcode
+ a(data-toggle="modal", data-target=".qr-modal", href="#qr-modal")
+  span.glyphicon.glyphicon-qrcode(aria-label="code",title="Get QR Code")
+.modal.fade.qr-modal(tabindex="-1",role="code",id="qr-modal")
+ .modal-dialog.modal-sm
+  .modal-content
+   
 if(currentUser==visibleUser)
  li
   a(href="#edit",data-toggle="tab")
