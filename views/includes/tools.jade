@@ -10,7 +10,7 @@ li
 .modal.fade.qr-modal(tabindex="-1",role="code",id="qr-modal")
  .modal-dialog.modal-sm
   .modal-content
-   
+   img(src='https://api.qrserver.com/v1/create-qr-code/?data=http://apcentral.herokuapp.com/'+user.shortname+'/&amp;size=100x100" alt="" title=""')
 if(currentUser==visibleUser)
  li
   a(href="#edit",data-toggle="tab")
