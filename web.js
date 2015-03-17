@@ -130,23 +130,37 @@ function authentify(req,res,next){
 //Not currently in use
 function authenticate(req,res,next) {
 	if(req.currentUser&&(req.currentUser.shortname == req.params.userId))
-	{
-		next();
-	}
+	{next();}
 	else
-	{
-		res.redirect('/'+req.params.userId);
-	}
+	{res.redirect('/'+req.params.userId);}
 }
 
+function authentificate(req,res,next){
+	if (req&&req.session&&req.session.user_id&&req.params.userId) {
+        User.findOne({_id:req.session.user_id}, function(err,user) {
+            if (user) {
+                req.currentUser = user;
+        	 if(req.currentUser.shortname == req.params.userId)
+			{next();}
+		else
+			{res.redirect('/'+req.params.userId);}
+        }  else {
+            //next();
+		res.redirect('/'+req.params.userId);
+          	}
+});
+} else {
+    res.redirect('/');
+}
+}
 app.get('/recognize', function(req,res){
-if(req.currentUser) {res.render("includes/tools.jade",{'user':req.currentUser})} else {res.render("includes/login.jade");}
+if(req.currentUser) {res.render("includes/tools.jade",{'currentUser':req.currentUser})} else {res.render("includes/login.jade");}
 });
 
 app.get('/console/:userId',authentify, function(req,res){
 if(req.currentUser) {
     User.findOne({'shortname':req.params.userId},function(err,user){
-	res.render('console.jade',{'user':user});
+	res.render('console.jade',{'currentUser':user});
 });
 }
 else
@@ -155,15 +169,14 @@ res.redirect('/:userId');
 app.get('/scan', function(req,res){
 res.render('scanner.jade');
 });
-
 //Add authentication for is this user the userId
 app.get('/:userId/new', authentify,function(req,res){
-res.render('entryForm.jade',{'user':req.params.userId,'method':"create"});
+res.render('entryForm.jade',{'visibleUser':req.params.userId,'currentUser':req.currentUser,'method':"create"});
 //Return a form that creates a new entry for this user
 });
 app.get('/:userId/edit',authentify,function(req,res){
 	Page.findOne({'shortname':req.params.userId,'path':'/'},function(err,page) {
-        res.render('entryForm.jade',{'user':req.params.userId,'method':"update",'path':req.params.path,'page': page});
+        res.render('entryForm.jade',{'visibleUser':req.params.userId,'currentUser':req.currentUser,method':"update",'path':req.params.path,'page': page});
     });
 });
 app.get('/:userId/',  function(req,res){
@@ -187,10 +200,14 @@ app.get('/:userId/:path/edit', authentify,function(req,res){
 });
 //add auth
 app.post('/:userId/create', authentify, function(req,res){
+	if(req.params.userId!=req.currentUser.shortname) {
 var e = new Page(req.body.page);
 e.shortname = req.params.userId;
 e.save();
 res.redirect('/'+req.params.userId+'/'+e.path);
+}
+else
+res.redirect('/');
 });
 
 app.post('/:userId/update', authentify, function(req,res){
