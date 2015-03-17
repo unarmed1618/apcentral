@@ -19,8 +19,8 @@ function renderJadeFile(template, options) {
   var fn = jade.compile(template, options);
   return fn(options.locals);
 }
- var dbstr = "mongodb://human:hurpen@ds039860.mongolab.com:39860/heroku_app21751565"
-var realdbstr = "mongodb://apcentral:centralized1618@dbh44.mongolab.com:27447/heroku_app22887245"
+ var fakedbstr = "mongodb://human:hurpen@ds039860.mongolab.com:39860/heroku_app21751565"
+var dbstr = "mongodb://apcentral:centralized1618@dbh44.mongolab.com:27447/heroku_app22887245"
 app.configure('development', function() {
   app.set('db-uri', dbstr);
   app.use(express.errorHandler({ dumpExceptions: true }));
