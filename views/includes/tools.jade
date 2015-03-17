@@ -1,8 +1,8 @@
 li 
- a(href="/console/"+currentUser)
+ a(href="/console/"+currentUser.shortname)
   span.glyphicon.glyphicon-cog(aria-label="settings",title="Settings")
 li 
- a(href="/"+currentUser)
+ a(href="/"+currentUser.shortname)
   span.glyphicon.glyphicon-home(aria-label="home", title="Home")
 li
  a(data-toggle="modal", data-target=".qr-modal", href="#qr-modal")
