@@ -42,7 +42,20 @@ form.entry(method="post" action="/"+user+"/"+method)
        label Entry Link Description
        input(name="page[entries]["+i+"][linkdesc]", value=entry.linkdesc)
        label Entry Link Type
-       input(name="page[entries]["+i+"][type]", value=entry.type)
+       //input(name="page[entries]["+i+"][type]", value=entry.type)
+       select(name="page[entries]["+i+"][type]")
+        if(entry.type == "viewer")
+          option(value="viewer" selected) Viewer
+          option(value="menu") Menu
+          option(value="external") External Link
+        else if(entry.type =="menu")
+          option(value="viewer") Viewer
+          option(value="menu" selected) Menu
+          option(value="external") External Link
+        else
+          option(value="viewer") Viewer
+          option(value="menu") Menu
+          option(value="external" selected) External Link
     a(onClick="addAnotherSet();incrementR();", id="end") Add Another Entry
   else
    div(id="entry_0")
@@ -55,7 +68,10 @@ form.entry(method="post" action="/"+user+"/"+method)
     label Entry Link Description
     input(name="page[entries][0][linkdesc]")
     label Entry Link Type
-    input(name="page[entries][0][type]")
+    select(name="page[entries][0][type]") 
+     option(value="viewer") Viewer
+     option(value="menu") Menu
+     option(value="external") External Link
    a(onClick="addAnotherSet();incrementR();", id="end") Add Another Entry
   div
     input(type='submit', value='Register')
