@@ -154,8 +154,14 @@ function authentificate(req,res,next){
 }
 }
 app.get('/recognize', function(req,res){
-if(req.currentUser) {res.render("includes/tools.jade",{'currentUser':req.currentUser})} else {res.render("includes/login.jade");}
+if(req.currentUser) {res.render("includes/tools.jade",{'currentUser':req.currentUser,'visibleUser':req.params.userId})} else {res.render("includes/login.jade");}
 });
+app.get('/recognize/api',loadUserPassive,function(req,res){
+	if(req.currentUser)
+		res.json({'see':true});
+	else
+		res.json({'see':false});
+})
 
 app.get('/console/:userId',authentify, function(req,res){
 if(req.currentUser) {
