@@ -182,7 +182,7 @@ res.render('entryForm.jade',{'user':req.params.userId,'method':"create"});
 });
 app.get('/:userId/edit',authentify,function(req,res){
 	Page.findOne({'shortname':req.params.userId,'path':'/'},function(err,page) {
-        res.render('entryForm.jade',{'user':req.params.userId,method':"update",'path':req.params.path,'page': page});
+        res.render('entryForm.jade',{'user':req.params.userId,'method':"update",'path':req.params.path,'page': page});
     });
 });
 app.get('/:userId/',  function(req,res){
