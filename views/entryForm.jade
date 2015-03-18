@@ -11,25 +11,29 @@ script.
   }
 //form.entry(method="post" action="/"+user+"/"+method);
 form.entry(method="post" action="/"+user+"/"+method)
+ .form-group
   if(path)
-    label Previous Path
+    label(for="path") Previous Path
     input(type=hidden, name="path",value=path)
-  label Title
+ .form-group
+  label(for="page[title]") Title
   if(page&&page.title)
     input(name="page[title]",value=page.title) 
   else
     input(name="page[title]")
-  label Description
+ .form-group
+  label(for="page[desc]") Description
   if(page&&page.desc)
     input(name="page[desc]",value=page.desc)
   else
     input(name="page[desc]")
-  label Path
+ .form-group
+  label(for="page[path]") Path
   if(page&&page.path)
     input(name="page[path]",value=page.path)
   else
     input(name="page[path]")
-  if(page&&page.entries)
+ if(page&&page.entries)
     each entry, i in page.entries
       div(id="entry_"+i)
        label Entry Label
