@@ -208,7 +208,7 @@ app.get('/:userId/:path/edit', authentify,function(req,res){
 });
 //add auth
 app.post('/:userId/create', authentify, function(req,res){
-	if(req.params.userId!=req.currentUser.shortname) {
+	if(req.params.userId==req.currentUser.shortname) {
 var e = new Page(req.body.page);
 e.shortname = req.params.userId;
 e.save();
