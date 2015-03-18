@@ -10,25 +10,24 @@ script.
    // $("<p> The "+nth+" test </p>").insertBefore("#end");
   }
 //form.entry(method="post" action="/"+user+"/"+method);
-form.entry(method="post" action="/"+user+"/"+method)
- .form-group
+form.entry.form-horizontal(method="post" action="/"+user+"/"+method)
   if(path)
     label(for="path") Previous Path
     input(type=hidden, name="path",value=path)
  .form-group
-  label(for="page[title]") Title
+  label.col-sm-2.control-label(for="page[title]") Title
   if(page&&page.title)
     input(name="page[title]",value=page.title) 
   else
     input(name="page[title]")
  .form-group
-  label(for="page[desc]") Description
+  label.col-sm-2.control-label(for="page[desc]") Description
   if(page&&page.desc)
     input(name="page[desc]",value=page.desc)
   else
     input(name="page[desc]")
  .form-group
-  label(for="page[path]") Path
+  label.col-sm-2.control-label(for="page[path]") Path
   if(page&&page.path)
     input(name="page[path]",value=page.path)
   else
@@ -37,20 +36,20 @@ form.entry(method="post" action="/"+user+"/"+method)
     each entry, i in page.entries
       div(id="entry_"+i)
        .form-group
-        label(for="page[entries]["+i+"][label]") Entry Label
+        label.col-sm-2.control-label(for="page[entries]["+i+"][label]") Entry Label
         input(name="page[entries]["+i+"][label]", value=entry.label) 
         //, onLoad="incrementR()")
        .form-group
-        label(for="page[entries]["+i+"][content]") Entry Content
+        label.col-sm-2.control-label(for="page[entries]["+i+"][content]") Entry Content
         input(name="page[entries]["+i+"][content]", value=entry.content)
        .form-group
-        label(for="page[entries]["+i+"][link]") Entry Link
+        label.col-sm-2.control-label(for="page[entries]["+i+"][link]") Entry Link
         input(name="page[entries]["+i+"][link]", value=entry.link)
        .form-group
-        label(for="page[entries]["+i+"][linkdesc]") Entry Link Description
+        label.col-sm-2.control-label(for="page[entries]["+i+"][linkdesc]") Entry Link Description
         input(name="page[entries]["+i+"][linkdesc]", value=entry.linkdesc)
        .form-group
-        label(for="page[entries]["+i+"][type]") Entry Link Type
+        label.col-sm-2.control-label(for="page[entries]["+i+"][type]") Entry Link Type
         //input(name="page[entries]["+i+"][type]", value=entry.type)
         select(name="page[entries]["+i+"][type]")
          if(entry.type == "viewer")
@@ -69,19 +68,19 @@ form.entry(method="post" action="/"+user+"/"+method)
   else
    div(id="entry_0")
     .form-group
-     label(for="page[entries][0][label]") Entry Label
+     label.col-sm-2.control-label(for="page[entries][0][label]") Entry Label
      input(name="page[entries][0][label]")
     .form-group
-     label(for="page[entries][0][content]") Entry Content
+     label.col-sm-2.control-label(for="page[entries][0][content]") Entry Content
      input(name="page[entries][0][content]")
     .form-group
-     label(for="page[entries][0][link]") Entry Link
+     label.col-sm-2.control-label(for="page[entries][0][link]") Entry Link
      input(name="page[entries][0][link]")
     .form-group
-     label(for="page[entries][0][linkdesc]") Entry Link Description
+     label.col-sm-2.control-label(for="page[entries][0][linkdesc]") Entry Link Description
      input(name="page[entries][0][linkdesc]")
     .form-group
-     label(for="page[entries][0][type]") Entry Link Type
+     label.col-sm-2.control-label(for="page[entries][0][type]") Entry Link Type
      select(name="page[entries][0][type]") 
       option(value="viewer") Viewer
       option(value="menu") Menu
