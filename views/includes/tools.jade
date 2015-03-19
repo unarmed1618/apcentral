@@ -1,23 +1,23 @@
 li 
- a(href="/console/"+currentUser.shortname)
+ a(href="/console/"+currentUser.shortname).col-xs-1
   span.glyphicon.glyphicon-cog(aria-label="settings",title="Settings")
 li 
- a(href="/"+currentUser.shortname)
+ a(href="/"+currentUser.shortname).col-xs-1
   span.glyphicon.glyphicon-home(aria-label="home", title="Home")
 li
- a(data-toggle="modal", data-target=".qr-modal", href="#qr-modal")
+ a(data-toggle="modal", data-target=".qr-modal", href="#qr-modal").col-xs-1
   span.glyphicon.glyphicon-qrcode(aria-label="code",title="Get QR Code")
 .modal.fade.qr-modal(tabindex="-1",role="code",id="qr-modal")
  .modal-dialog.modal-sm
   .modal-content
    img(src='https://api.qrserver.com/v1/create-qr-code/?data=http://apcentral.herokuapp.com/'+visibleUser+'/&amp;size=100x100" alt="" title=""')
-if(currentUser.shortname==visibleUser)
+if( currentUser..shortname==visibleUser)
  li
-  a(href="#edit",data-toggle="tab")
+  a(href="#edit",data-toggle="tab").col-xs-1
    span.glyphicon.glyphicon-edit
  li
-  a(href="/"+currentUser.shortname+"/add")
+  a(href="/"+currentUser.shortname+"/add").col-xs-1
    span.glyphicon.glyphicon-plus
 li
- a(href="/logout")
+ a(href="/logout").col-xs-1
   span.glyphicon.glyphicon-log-out(aria-label="logout", title="Log Out")
