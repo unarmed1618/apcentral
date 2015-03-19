@@ -14,6 +14,7 @@ script.
   //  label(for="path") Previous Path
   //  input(type=hidden, name="path",value=path)
 form.entry.form-horizontal(method="post" action="/"+user+"/"+method)
+  input(type=hidden, name="path",value=path)
   .form-group
    label.col-sm-2.control-label(for="page[title]") Title
    .col-sm-10
