@@ -220,7 +220,7 @@ res.redirect('/');
 
 app.post('/:userId/update', authentify, function(req,res){
 Page.update({'shortname':req.params.userId,'path':req.body.path},req.body.page,function(err, page,lastErrorObject) {
-res.redirect('/'+req.params.userId+'/'+page.path);
+res.redirect('/'+req.params.userId+'/'+req.body.path);
 });
 });
 app.post('/:userId/:path/delete', authentify, function(req,res){
