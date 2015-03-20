@@ -156,10 +156,10 @@ function authentificate(req,res,next){
 }
 app.get('/recognize', function(req,res){
 	var banjo = req.get("Referrer");
-	console.log(banjo);
+//	console.log(banjo);
 	var banjo1 = banjo.split('/');
-	console.log(banjo1[3]);
-	console.log(banjo1[4]);
+//	console.log(banjo1[3]);
+//	console.log(banjo1[4]);
 if(req.currentUser) {res.render("includes/tools.jade",{'currentUser':req.currentUser,'visibleUser':banjo1[3]})} else {res.render("includes/login.jade");}
 });
 /*
