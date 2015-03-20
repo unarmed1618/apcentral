@@ -155,6 +155,7 @@ function authentificate(req,res,next){
 }
 }
 app.get('/recognize', function(req,res){
+	console.log(req.get("Referrer"));
 if(req.currentUser) {res.render("includes/tools.jade",{'currentUser':req.currentUser,'visibleUser':req.query.viewing})} else {res.render("includes/login.jade");}
 });
 /*
