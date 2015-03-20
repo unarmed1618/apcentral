@@ -160,7 +160,7 @@ app.get('/recognize', function(req,res){
 	var banjo1 = banjo.split('/');
 	console.log(banjo1[3]);
 	console.log(banjo1[4]);
-if(req.currentUser) {res.render("includes/tools.jade",{'currentUser':req.currentUser,'visibleUser':banjo2})} else {res.render("includes/login.jade");}
+if(req.currentUser) {res.render("includes/tools.jade",{'currentUser':req.currentUser,'visibleUser':banjo1[3]})} else {res.render("includes/login.jade");}
 });
 /*
 app.get('/recognize/api',loadUserPassive,function(req,res){
