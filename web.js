@@ -157,10 +157,9 @@ function authentificate(req,res,next){
 app.get('/recognize', function(req,res){
 	var banjo = req.get("Referrer");
 	console.log(banjo);
-	var banjo1 = banjo.substring(banjo.indexOf('/'), banjo.length);
-	console.log(banjo1);
-	var banjo2 = banjo1.substring(0,banjo1.indexOf('/'));
-	console.log(banjo2);
+	var banjo1 = banjo.split('/');
+	console.log(banjo1[3]);
+	console.log(banjo1[4]);
 if(req.currentUser) {res.render("includes/tools.jade",{'currentUser':req.currentUser,'visibleUser':banjo2})} else {res.render("includes/login.jade");}
 });
 /*
