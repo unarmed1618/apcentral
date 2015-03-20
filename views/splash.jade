@@ -1,7 +1,7 @@
 include includes/nav
 div.row
-    div.col-xs-12.col-sm-6(onload='setViewer("/stats")' style="margin:0px;border:0px;")
-      div.well.well-sm(style="background: linear-gradient(to top, white, black);border:0px;margin:0px;padding-right:0px")
+    div.col-xs-12.col-sm-6(style="margin:0px;border:0px;")
+      div.well.well-sm(style="background: linear-gradient(to top, white, black);border:0px;margin:0px;")
        div(class="panel-group",id="accordion")
         if(page&&page.entries)
          each entry,i in page.entries
@@ -23,7 +23,7 @@ div.row
                li: a(href=entry.link): =entry.linkdesc
         else
           p Nobody Home!
-    div.hidden-xs.col-sm-6.col-md-6.col-lg-6#viewport
+    div.hidden-xs.col-sm-5.col-md-5.col-lg-5#viewport
       script.
       var x = location.pathname;
       //alert(x);
