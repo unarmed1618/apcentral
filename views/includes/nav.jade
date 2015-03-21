@@ -19,6 +19,9 @@ html(lang="en")
        p.hidden-xs.navbar-text=page.title
      else
        p.hidden-xs.navbar-text Active Portfolio
+     ul.nav.navbar-nav.col-xs-6#recognizer 
+       script.
+        setRec('/recognize');
      ul.nav.navbar-nav.navbar-right.col-xs-2
       li
        a(href="/").col-xs-1
@@ -26,6 +29,4 @@ html(lang="en")
       li
        a(href="#stats").col-xs-1
         span.glyphicon.glyphicon-stats(title="Statistics")
-     ul.nav.navbar-nav.navbar-right.col-xs-8#recognizer 
-       script.
-        setRec('/recognize');
+     
