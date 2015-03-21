@@ -7,7 +7,7 @@ script.
   function addAnotherSet(){
     var nth = 0;
    $("[id^='entry_']").function(){nth++};
-   $("<div id='entry_"+nth+"'><label>Entry Label</label><input name='page[entries]["+nth+"][label]'><label>Entry Content</label><input name='page[entries]["+nth+"][content]'><label>Entry Link</label><input name='page[entries]["+nth+"][link]'><label>Entry Link Description</label><input name='page[entries]["+nth+"][linkdesc]'><label>Entry Link Type</label><select name='page[entries]["+nth+"][type]'><option value='viewer'>Viewer</option><option value='menu'>Menu</option><option value='external' selected>External Link</option></div>").insertBefore("#end");    
+   $("<div class='kjdentry' id='entry_"+nth+"'><label>Entry Label</label><input name='page[entries]["+nth+"][label]'><label>Entry Content</label><input name='page[entries]["+nth+"][content]'><label>Entry Link</label><input name='page[entries]["+nth+"][link]'><label>Entry Link Description</label><input name='page[entries]["+nth+"][linkdesc]'><label>Entry Link Type</label><select name='page[entries]["+nth+"][type]'><option value='viewer'>Viewer</option><option value='menu'>Menu</option><option value='external' selected>External Link</option></div>").insertBefore("#end");    
    // $("<p> The "+nth+" test </p>").insertBefore("#end");
   }
   //form.entry(method="post" action="/"+user+"/"+method);
@@ -38,7 +38,7 @@ form.entry.form-horizontal(method="post" action="/"+user+"/"+method)
      input(name="page[path]")
   if(page&&page.entries)
      each entry, i in page.entries
-       div(id="entry_"+i)
+       div.kjdentry(id="entry_"+i)
         .form-group
          label.col-sm-2.control-label(for="page[entries]["+i+"][label]") Entry Label
          .col-sm-10
@@ -74,7 +74,7 @@ form.entry.form-horizontal(method="post" action="/"+user+"/"+method)
             option(value="external" selected) External Link
      a(onClick="addAnotherSet();incrementR();", id="end") Add Another Entry
    else
-    div(id="entry_0")
+    div.kjdentry(id="entry_0")
      .form-group
       label.col-sm-2.control-label(for="page[entries][0][label]") Entry Label
       .col-sm-10
