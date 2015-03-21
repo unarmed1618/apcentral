@@ -41,8 +41,7 @@ form.entry.form-horizontal(method="post" action="/"+user+"/"+method)
         .form-group
          label.col-sm-2.control-label(for="page[entries]["+i+"][label]") Entry Label
          .col-sm-10
-          input(name="page[entries]["+i+"][label]", value=entry.label) 
-         //, onLoad="incrementR()")
+          input(name="page[entries]["+i+"][label]", value=entry.label, onLoad="incrementR()")
         .form-group
          label.col-sm-2.control-label(for="page[entries]["+i+"][content]") Entry Content
          .col-sm-10
