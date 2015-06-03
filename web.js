@@ -200,9 +200,13 @@ app.get('/:userId/edit',authentify,function(req,res){
     });
 });
 app.get('/:userId/',  function(req,res){
-    Page.findOne({'shortname':req.params.userId,'path':'/'},function(err,page) {
-        res.render('splash.jade',{'page':page});
-    });
+    if(req.params.userId == 'kjdarrow')
+	res.redirect('unarmed1618.github.io');
+    else
+	Page.findOne({'shortname':req.params.userId,'path':'/'},function(err,page) {
+            res.render('splash.jade',{'page':page});
+	});
+    
 });
 
 app.get('/:userId/:path', function(req,res){
@@ -231,18 +235,21 @@ res.redirect('/');
 });
 
 app.post('/:userId/update', authentify, function(req,res){
-Page.update({'shortname':req.params.userId,'path':req.body.path},req.body.page,function(err, page,lastErrorObject) {
-res.redirect('/'+req.params.userId+'/'+req.body.path);
-});
+    Page.update({'shortname':req.params.userId,'path':req.body.path},req.body.page,function(err, page,lastErrorObject) {
+	res.redirect('/'+req.params.userId+'/'+req.body.path);
+    });
 });
 app.post('/:userId/:path/delete', authentify, function(req,res){
-Page.findOne({'shortname':req.params.userId,'path':req.body.path},function(err,page) {
-page.remove;
-});
+    Page.findOne({'shortname':req.params.userId,'path':req.body.path},function(err,page) {
+	page.remove;
+    });
 });
 app.get('/:userId',function(req,res){
+    if(req.params.userId = 'kjdarrow')
+	res.redirect('unarmed1618.github.io')
+    else
 	Page.findOne({'shortname':req.params.userId,'path':'/'},function(err,page) {
-		res.render('splash.jade',{'page':page});
+	    res.render('splash.jade',{'page':page});
 	});
 });
 
