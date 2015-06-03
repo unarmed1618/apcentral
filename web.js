@@ -201,7 +201,7 @@ app.get('/:userId/edit',authentify,function(req,res){
 });
 app.get('/:userId/',  function(req,res){
     if(req.params.userId == 'kjdarrow')
-	res.redirect('unarmed1618.github.io');
+	res.redirect('http://unarmed1618.github.io');
     else
 	Page.findOne({'shortname':req.params.userId,'path':'/'},function(err,page) {
             res.render('splash.jade',{'page':page});
@@ -246,7 +246,7 @@ app.post('/:userId/:path/delete', authentify, function(req,res){
 });
 app.get('/:userId',function(req,res){
     if(req.params.userId = 'kjdarrow')
-	res.redirect('unarmed1618.github.io')
+	res.redirect('http://unarmed1618.github.io')
     else
 	Page.findOne({'shortname':req.params.userId,'path':'/'},function(err,page) {
 	    res.render('splash.jade',{'page':page});
